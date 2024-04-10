@@ -5,11 +5,13 @@ error_reporting(E_ALL);
 $json = file_get_contents('php://input');
 $data = json_decode($json, true);
 $path = './data.json';
-//file_put_contents($path, $json);
+file_put_contents($path, $data);
+echo $json;
 
-$json = file_get_contents('./data.json');
-$dataArray = json_decode($json, true);
-print_r($json["Path"]);
+$json1 = file_get_contents('./data.json');
+echo $json1;
+$dataArray = json_decode($json1, true);
+print_r($dataArray["Path"]);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
