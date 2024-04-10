@@ -2,23 +2,40 @@
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-
 $json = file_get_contents('php://input');
 $data = json_decode($json, true);
-echo $data;
-if ($json == null) echo 123;
+$path = './data.json';
+//file_put_contents($path, $json);
+
+$json = file_get_contents('./data.json');
+$dataArray = json_decode($json, true);
+print_r($json["Path"]);
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+    echo "Содержимое POST-запроса:<br>";
+    foreach ($_POST as $key => $value) {
+        echo "$key: $value<br>";
+    }
+ 
+
+} 
+$C_size;
+$C_elapsed_time;
+$C_date;
+
+if ($data) {
+    $C_size = $data[0]->SizeInt64;
+    $C_elapsed_time = $data[0]->ElapsedTime;
+    $C_date = $date[0]->Date;
+    postToMySQL($C_size, $C_elapsed_time, $C_date, $conf);
+}
 
 
-
-
-
-$C_size = 9;
-$C_elapsed_time = 9;
-$C_date = "2009-01-01 09:01:01";
 
 require './config.php';
 
-//postToMySQL($C_size, $C_elapsed_time, $C_date, $conf);
+
 
 function postToMySQL($C_size, $C_elapsed_time, $C_date, $conf) {
     $conn = new mysqli($conf[0], $conf[1], $conf[2], $conf[3]);
