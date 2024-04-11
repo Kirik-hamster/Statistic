@@ -31,16 +31,9 @@ $C_size = $data["SizeInt64"];
 
 $C_size_string = $data["Size"];
 $C_elapsed_time = $data["ElapsedTime"];
-file_put_contents($path, $C_size);
+file_put_contents($path, $data);
 $C_path = $data["Path"];
 postToMySQL($C_size, $C_elapsed_time, $C_size_string, $C_path, $conf);
-
-
-
-
-
-
-
 
 function postToMySQL($C_size, $C_elapsed_time, $C_size_string, $C_path, $conf) {
     $conn = new mysqli($conf[0], $conf[1], $conf[2], $conf[3]);
