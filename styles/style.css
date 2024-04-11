@@ -3,10 +3,11 @@ body {
     margin: 0;
     display: flex;
     justify-content: center;
+
+    flex-direction: column;
 }
 table {
-    margin-top: 10px;
-    width: 80%;
+    width: 100%;
     border-collapse: collapse;
 }
 th, td {

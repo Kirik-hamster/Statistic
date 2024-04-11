@@ -1,5 +1,3 @@
-
-
 async function fetchJson() {
     const url = new URL("http://localhost/Statistic/get-statistic.php");
     try {
@@ -21,8 +19,8 @@ async function fetchJson() {
 
 document.addEventListener('DOMContentLoaded', async () => {
     const jsonData = await fetchJson();
-    console.log(jsonData);
-    table = document.querySelector("table");
+
+    let table = document.querySelector("table");
     for (let i = 0; i < jsonData.length; i++) {
 
         const row = document.createElement('tr');
@@ -32,7 +30,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         row.appendChild(idCell);
 
         const sizeCell = document.createElement('td');
-        sizeCell.textContent = jsonData[i].C_size;
+        sizeCell.textContent = jsonData[i].C_size_string;
         row.appendChild(sizeCell);
 
         const elipsedTimeCell = document.createElement('td');
