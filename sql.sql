@@ -1,10 +1,11 @@
-create database Statistic;
-USE Statistic;
+DROP database statistic;
+create database statistic;
+USE statistic;
 CREATE TABLE t_stat ( 
-    C_id int auto_increment primary key, 
-    C_path varchar(255), 
-    C_size int, 
-    C_elapsed_time int, 
-    C_date timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    C_size_string varchar(255)
+    c_id int auto_increment primary key, 
+    c_path text, 
+    c_size bigint, 
+    c_elapsed_time int, 
+    c_date timestamp DEFAULT cURRENT_TIMESTAMP ON UPDATE cURRENT_TIMESTAMP,
+    c_size_string varchar(255)
 );

@@ -11,6 +11,7 @@ async function fetchJson() {
         }
 
         const data = await response.json();
+        console.log(data);
         return data;
     } catch (error) {
         console.error("Ошибка при отправке запроса", error);
@@ -19,33 +20,35 @@ async function fetchJson() {
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
-    const jsonData = await fetchJson();
+    
 
+    const jsonData = await fetchJson();
+    let back = document.querySelector(".Back").href = jsonData[1];
     drawGraf(jsonData);
 
     let table = document.querySelector("table");
-    for (let i = 0; i < jsonData.length; i++) {
-
+    jsonData[0].forEach((_, i) => {
         const row = document.createElement('tr');
 
         const idCell = document.createElement('td');
-        idCell.textContent = jsonData[i].C_id;
+        idCell.textContent = jsonData[0][i].c_id;
         row.appendChild(idCell);
 
         const sizeCell = document.createElement('td');
-        sizeCell.textContent = jsonData[i].C_size_string;
+        sizeCell.textContent = jsonData[0][i].c_size_string;
         row.appendChild(sizeCell);
 
         const elipsedTimeCell = document.createElement('td');
-        elipsedTimeCell.textContent = jsonData[i].C_elapsed_time;
+        elipsedTimeCell.textContent = jsonData[0][i].c_elapsed_time;
         row.appendChild(elipsedTimeCell);
 
         const dateCell = document.createElement('td');
-        dateCell.textContent = jsonData[i].C_date;
+        dateCell.textContent = jsonData[0][i].c_date;
         row.appendChild(dateCell);
 
         table.appendChild(row);
-    }
+    });
+
 });
 
 

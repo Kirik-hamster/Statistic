@@ -18,13 +18,20 @@ try {
     $pdo = new PDO($dsn, $username, $password, $opt);
 
     $table = 't_stat';
-    $sql = "SELECT * FROM $table";
+    $sql = "SELECT c_id, c_size, c_elapsed_time, c_size_string, c_path, c_date FROM $table";
 
     $stmt = $pdo->query($sql);
 
     $results = $stmt->fetchAll();
+    $pathBack = file_get_contents('./data.json');
+    $pathArr = json_decode($pathBack, true);
+    $path = $pathArr["pathBack"];
 
-    $json = json_encode($results, JSON_PRETTY_PRINT);
+    $arr = array();
+    $arr[] = $results;
+    $arr[] = $path;
+
+    $json = json_encode($arr, JSON_PRETTY_PRINT);
 
     header('Content-Type: application/json');
 

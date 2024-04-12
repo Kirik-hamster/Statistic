@@ -2,6 +2,6 @@
 $servername = "localhost";
 $username = "kirill";
 $password = "051220020";
-$dbname = "Statistic";
+$dbname = "statistic";
 $conf = [$servername, $username, $password, $dbname]
 ?>
