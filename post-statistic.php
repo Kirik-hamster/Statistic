@@ -6,32 +6,11 @@ $json = file_get_contents('php://input');
 $data = json_decode($json, true);
 $path = './data.json';
 
-echo $json;
-
-$json1 = file_get_contents('./data.json');
-echo $json1;
-$dataArray = json_decode($json1, true);
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-    echo "Содержимое POST-запроса:<br>";
-    foreach ($_POST as $key => $value) {
-        echo "$key: $value<br>";
-    }
- 
-
-} 
 require './config.php';
-print_r($conf);
-$C_size;
-$C_elapsed_time;
-$C_size_string; 
-$C_path;
-$C_size = $data["SizeInt64"];
 
+$C_size = $data["SizeInt64"];
 $C_size_string = $data["Size"];
 $C_elapsed_time = $data["ElapsedTime"];
-file_put_contents($path, $data);
 $C_path = $data["Path"];
 postToMySQL($C_size, $C_elapsed_time, $C_size_string, $C_path, $conf);
 
